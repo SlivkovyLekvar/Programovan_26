@@ -6,6 +6,6 @@ typedef struct Node {
     struct Node* next;
 } Node;
 
-void Save(const char* filename, Node* head);
+void save_to_txt(const char* filename, Node* start);
 
 #endif
