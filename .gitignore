@@ -1,6 +1,5 @@
 # Executables
 *.exe
-*.out
 
 # Object files
 *.o
@@ -9,8 +8,8 @@
 # Logs
 *.log
 
-# VS Code settings
+# VS Code
 .vscode/
 
-# MacOS
-.DS_Store
+# MSYS
+*.dll
