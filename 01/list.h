@@ -12,4 +12,6 @@ Node* convert_array(int array[], int len);
 
 int save_to_txt(const char* filename, Node* start);
 
+int read_from_txt(const char* filename, Node** start);
+
 #endif

@@ -10,31 +10,31 @@ Node* create_node(int value) {
 }
 
 Node* convert_array(int array[], int len) {
-
     if (len == 0) return NULL;
 
-    Node* vys;
-    Node* akt;
-    vys = akt = NULL;
+    Node* new;
+    Node* curr;
+    new = curr = NULL;
     for (int i = 0; i < len; i++ ) {
         Node* tmp = create_node(array[i]);
-        if (vys == NULL) vys = akt = tmp;
-        else akt = akt->next = tmp;
+        if (new == NULL) new = curr = tmp;
+        else curr = curr->next = tmp;
     }
-    return vys;
+    return new;
 }
 
 int save_to_txt(const char* filename, Node* start) {
     FILE* file = fopen(filename, "w");
 
     if (file == NULL) {
+        printf("Soubor nelze otevrit.\n");
         return(100);
     }
     // Novy ukazovatel, ktory sa bude posuvat
     Node* curr = start;
     
     while (curr != NULL) {
-        fprintf(file, "%d", curr->value);
+        fprintf(file, "%d ", curr->value);
         curr = curr->next;
     }
 
@@ -42,4 +42,27 @@ int save_to_txt(const char* filename, Node* start) {
 
     return 0;
 
+}
+
+int read_from_txt(const char *filename, Node **list) {
+    FILE* file = fopen(filename, "r");
+    if (file == NULL) {
+        printf("Soubor nelze otevrit.\n");
+        return(100);
+    }
+
+    Node* start = NULL;
+    Node* curr = NULL;
+
+    int tmp;
+
+    while (fscanf(file, "%d", &tmp) == 1) {
+        Node* new = create_node(tmp);
+        if (start == NULL) start = curr = new;
+        else curr = curr->next = new;
+    }
+
+    fclose(file);
+    *list = start;
+    return 0;
 }
