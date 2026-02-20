@@ -66,3 +66,11 @@ int read_from_txt(const char *filename, Node **list) {
     *list = start;
     return 0;
 }
+
+void print_list(Node* start) {
+    Node* curr = start;
+    while (curr != NULL) {
+        printf("%d ", curr->value);
+        curr = curr->next;
+    }
+}

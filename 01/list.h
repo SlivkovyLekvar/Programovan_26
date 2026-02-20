@@ -14,4 +14,7 @@ int save_to_txt(const char* filename, Node* start);
 
 int read_from_txt(const char* filename, Node** start);
 
+void print_list(Node* start);
+
+
 #endif

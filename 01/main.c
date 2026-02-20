@@ -14,10 +14,7 @@ int main() {
     read_from_txt("output2.txt", &new_list);
     printf("Seznam nacten ze souboru:\n");
 
-    while (new_list != NULL) {
-        printf("%d\n", new_list->value);
-        new_list = new_list->next;
-    }
+    print_list(new_list);
 
     return 0;
 }
