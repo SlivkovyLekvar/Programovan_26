@@ -16,5 +16,7 @@ int read_from_txt(const char* filename, Node** start);
 
 void print_list(Node* start);
 
+int count_occurences(Node* start, int value);
+
 
 #endif

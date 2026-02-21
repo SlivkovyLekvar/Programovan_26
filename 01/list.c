@@ -73,4 +73,15 @@ void print_list(Node* start) {
         printf("%d ", curr->value);
         curr = curr->next;
     }
+    printf("\n");
+}
+
+int count_occurences(Node *start, int value) {
+    int count = 0;
+    Node* curr = start;
+    while (curr != NULL) {
+        if (curr->value == value) count++;
+        curr = curr->next;
+    }
+    return count;
 }
