@@ -108,3 +108,21 @@ Node *delete_last_occurrence(Node *start, int value)
     free(last_occurrence);
     return start;
 }
+
+Node *delete_max(Node *start){
+    if (start == NULL) return NULL;
+    Node* curr = start;
+    Node* max_node = start;
+    Node* prev = NULL;
+    while (curr->next != NULL) {
+        if (curr->next->value > max_node->value) {
+            max_node = curr->next;
+            prev = curr;
+        }
+        curr = curr->next;
+    }
+    if (prev == NULL) start = start->next;
+        else prev->next = max_node->next;
+    free(max_node);
+    return start;
+}

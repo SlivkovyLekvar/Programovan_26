@@ -25,6 +25,9 @@ int main() {
     printf("Hodnota 10 se v seznamu vyskytuje %d krat.\n", noOfOccurences);
     print_list(list);
 
+    delete_max(new_list);
+    print_list(new_list);
+
     return 0;
 }
 
