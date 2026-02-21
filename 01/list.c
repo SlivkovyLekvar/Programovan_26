@@ -126,3 +126,17 @@ Node *delete_max(Node *start){
     free(max_node);
     return start;
 }
+
+Node *reverse_list(Node *start){
+    if (start == NULL) return NULL;
+    Node* curr = start;
+    Node* prev = NULL;
+    Node* original_next = NULL;
+    while (curr != NULL){
+        original_next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = original_next;    
+    }
+    return prev;
+}

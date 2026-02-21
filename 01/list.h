@@ -22,5 +22,9 @@ Node* delete_last_occurrence(Node* start, int value);
 
 Node* delete_max(Node* start);
 
+Node* reverse_list(Node* start);
+
+Node* descending_sort(Node* start);
+
 
 #endif

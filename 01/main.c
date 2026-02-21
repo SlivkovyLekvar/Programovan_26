@@ -28,6 +28,8 @@ int main() {
     delete_max(new_list);
     print_list(new_list);
 
+    print_list(reverse_list(new_list));
+
     return 0;
 }
 
