@@ -20,6 +20,11 @@ int main() {
     int noOfOccurences = count_occurences(list, 10);
     printf("Hodnota 10 se v seznamu vyskytuje %d krat.\n", noOfOccurences);
 
+    delete_last_occurrence(list, 10);    
+    noOfOccurences = count_occurences(list, 10);
+    printf("Hodnota 10 se v seznamu vyskytuje %d krat.\n", noOfOccurences);
+    print_list(list);
+
     return 0;
 }
 

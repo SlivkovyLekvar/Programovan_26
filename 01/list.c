@@ -30,9 +30,8 @@ int save_to_txt(const char* filename, Node* start) {
         printf("Soubor nelze otevrit.\n");
         return(100);
     }
-    // Novy ukazovatel, ktory sa bude posuvat
-    Node* curr = start;
-    
+
+    Node* curr = start;   
     while (curr != NULL) {
         fprintf(file, "%d ", curr->value);
         curr = curr->next;
@@ -84,4 +83,28 @@ int count_occurences(Node *start, int value) {
         curr = curr->next;
     }
     return count;
+}
+
+Node *delete_last_occurrence(Node *start, int value)
+{
+    Node* curr = start;
+    Node* last_occurrence = NULL;
+    Node* prev = NULL;
+    Node* prev_last = NULL;
+    while (curr != NULL) {
+        if (curr->value == value) {
+            prev_last = prev;
+            last_occurrence = curr;
+        }
+        prev = curr;
+        curr = curr->next;
+    }
+    if (last_occurrence == NULL) {
+        fprintf(stderr, "Hodnota nenalezena v seznamu.\n");
+        return start;
+    }
+    if (prev_last == NULL) start = start->next;
+        else prev_last->next = last_occurrence->next;
+    free(last_occurrence);
+    return start;
 }

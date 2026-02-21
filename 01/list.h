@@ -18,5 +18,7 @@ void print_list(Node* start);
 
 int count_occurences(Node* start, int value);
 
+Node* delete_last_occurrence(Node* start, int value);
+
 
 #endif
