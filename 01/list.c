@@ -285,3 +285,19 @@ int split(Node *start, int value, Node **list1, Node **list2){
     *list2 = start2;
     return 0;
 }
+
+Node *merge(Node *list1, Node *list2){
+    Node*merged = NULL;
+    Node* curr1 = list1;
+    Node* curr2 = list2;
+    Node* curr_merged = create_node(list1->value);
+    while (curr1 != NULL && curr2 != NULL) {
+        curr_merged->next = create_node(curr2->value);
+        curr_merged = curr_merged->next;
+        curr2 = curr2->next;
+        curr_merged->next = create_node(curr1->next->value);
+        curr_merged = curr_merged->next;
+        curr1 = curr1->next;
+    }
+    return merged;
+}
