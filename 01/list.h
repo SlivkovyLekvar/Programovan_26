@@ -28,5 +28,11 @@ Node* ascending_sort(Node* start);
 
 Node* descending_sort(Node* start);
 
+void delete_list(Node* start);
+
+Node* swap_first_last(Node* start);
+
+Node* swap_sdecond_penultimate(Node* start);
+
 
 #endif

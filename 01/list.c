@@ -164,7 +164,27 @@ Node* ascending_sort(Node *start){
     return sorted;
 }
 
-Node *descending_sort(Node *start)
-{
+Node *descending_sort(Node *start){
     return reverse_list(ascending_sort(start));
+}
+
+void delete_list(Node *start){
+    Node* curr = start;
+    while (curr != NULL) {
+        Node* next = curr->next;
+        free(curr);
+        curr = next;
+    }
+}
+
+Node *swap_first_last(Node *start){
+    Node* penultimate = start;
+    if (start == NULL || start->next == NULL) return start;
+    Node* first = start;
+    while (penultimate->next->next != NULL) penultimate = penultimate->next;
+    start = penultimate->next;
+    start->next = first->next;
+    penultimate->next = first;
+    first->next = NULL;
+    return start;
 }

@@ -34,6 +34,8 @@ int main() {
     print_list(ascending_sort(reversedList));
     print_list(descending_sort(reversedList));
 
+    print_list(swap_first_last(list));
+
     return 0;
 }
 
