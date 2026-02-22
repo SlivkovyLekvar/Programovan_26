@@ -38,5 +38,11 @@ int compare(Node* list1, Node* list2);
 
 Node* copy_list(Node* start);
 
+int list_length(Node* start);
+
+int split(Node* start, int value, Node** list1, Node** list2);
+
+Node* merge(Node* list1, Node* list2);
+
 
 #endif

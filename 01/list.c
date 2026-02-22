@@ -240,3 +240,48 @@ Node *copy_list(Node *start){
     curr_new->next = NULL;
     return new_start;
 }
+
+int list_length(Node *start){
+    int len = 0;
+    Node* curr = start;
+    while (curr != NULL) {
+        len++;
+        curr = curr->next;
+    }
+    return len;
+}
+
+int split(Node *start, int value, Node **list1, Node **list2){
+    if (start == NULL) {
+        *list1 = NULL;
+        *list2 = NULL;
+        return 0;
+    }
+    Node* start1 = create_node(start->value);
+    if (start->next == NULL) {
+        *list1 = start1;
+        *list2 = NULL;
+        return 0;
+    }
+    Node* start2 = create_node(start->next->value);
+    Node* curr1 = start1;
+    Node* curr2 = start2;
+    Node* curr = start->next->next;
+    int count = 1;
+    while (curr != NULL) {
+        if (count % value == 0) {
+            curr2->next = create_node(curr->value);
+            curr2 = curr2->next;
+        } else {
+            curr1->next = create_node(curr->value);
+            curr1 = curr1->next;
+        }
+        curr = curr->next;
+        count++;        
+    }
+    curr1->next = NULL;
+    curr2->next = NULL;
+    *list1 = start1;
+    *list2 = start2;
+    return 0;
+}

@@ -41,7 +41,7 @@ int main() {
     print_list(swap_second_penultimate(list3));
 
     int p1[] = { 15, 6, 19, 25, 7, 0, 6, 1, 85 };
-    int p2[] = { 15, 6, 19, 25, 7, 0 };
+    int p2[] = { 15};
     Node* s1 = convert_array(p1, sizeof(p1) / sizeof(p1[0]));
     Node* s2 = convert_array(p2, sizeof(p2) / sizeof(p2[0]));
 
@@ -50,6 +50,12 @@ int main() {
 
     Node* copy = copy_list(s2);
     print_list(copy);
+
+    Node* s3 = NULL;
+    Node* s4 = NULL;
+    split(s2, 2, &s3, &s4);
+    print_list(s3);
+    print_list(s4);
 
     return 0;
 }
