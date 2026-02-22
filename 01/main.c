@@ -48,6 +48,9 @@ int main() {
     int i = compare(s1, s2);
     printf("Porovnani seznamu: %d\n", i);
 
+    Node* copy = copy_list(s2);
+    print_list(copy);
+
     return 0;
 }
 

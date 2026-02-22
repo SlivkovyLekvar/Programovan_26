@@ -227,3 +227,16 @@ int compare(Node *list1, Node *list2){
     if (curr2 == NULL) return 1;
     return -1;
 }
+
+Node *copy_list(Node *start){
+    Node* new_start = create_node(start->value);
+    Node* curr_new = new_start;
+    Node* curr = start->next;
+    while (curr != NULL) {
+        curr_new->next = create_node(curr->value);
+        curr_new = curr_new->next;
+        curr = curr->next;
+    }
+    curr_new->next = NULL;
+    return new_start;
+}
