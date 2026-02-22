@@ -28,9 +28,11 @@ int main() {
     delete_max(new_list);
     print_list(new_list);
 
-    print_list(reverse_list(new_list));
+    Node* reversedList = reverse_list(new_list);
+    print_list(reversedList);
 
-    print_list(ascending_sort(new_list));
+    print_list(ascending_sort(reversedList));
+    print_list(descending_sort(reversedList));
 
     return 0;
 }

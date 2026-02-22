@@ -26,5 +26,7 @@ Node* reverse_list(Node* start);
 
 Node* ascending_sort(Node* start);
 
+Node* descending_sort(Node* start);
+
 
 #endif
