@@ -213,3 +213,17 @@ Node *swap_second_penultimate(Node *start){
         }
     return start;
 }
+
+int compare(Node *list1, Node *list2){
+    Node* curr1 = list1;
+    Node* curr2 = list2;
+    while (curr1 != NULL && curr2 != NULL) {
+        if (curr1->value < curr2->value) return -1;
+        if (curr1->value > curr2->value) return 1;
+        curr1 = curr1->next;
+        curr2 = curr2->next;
+    }
+    if (curr1 == NULL && curr2 == NULL) return 0;
+    if (curr2 == NULL) return 1;
+    return -1;
+}

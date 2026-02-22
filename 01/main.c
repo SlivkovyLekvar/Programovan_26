@@ -40,6 +40,14 @@ int main() {
     read_from_txt("output3.txt", &list3);
     print_list(swap_second_penultimate(list3));
 
+    int p1[] = { 15, 6, 19, 25, 7, 0, 6, 1, 85 };
+    int p2[] = { 15, 6, 19, 25, 7, 0 };
+    Node* s1 = convert_array(p1, sizeof(p1) / sizeof(p1[0]));
+    Node* s2 = convert_array(p2, sizeof(p2) / sizeof(p2[0]));
+
+    int i = compare(s1, s2);
+    printf("Porovnani seznamu: %d\n", i);
+
     return 0;
 }
 

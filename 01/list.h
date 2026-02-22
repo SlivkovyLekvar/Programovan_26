@@ -34,5 +34,9 @@ Node* swap_first_last(Node* start);
 
 Node* swap_second_penultimate(Node* start);
 
+int compare(Node* list1, Node* list2);
+
+Node* copy_list(Node* start);
+
 
 #endif
