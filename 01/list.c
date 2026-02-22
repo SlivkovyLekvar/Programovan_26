@@ -140,3 +140,28 @@ Node *reverse_list(Node *start){
     }
     return prev;
 }
+
+Node* ascending_sort(Node *start){
+    if (start == NULL) return NULL;
+    Node* sorted = NULL;
+    while (start != NULL) {
+        Node* max_node = start;
+        Node* curr = start;
+        Node* prev = NULL;
+        while (curr->next != NULL) {
+            if (curr->next->value > max_node->value) {
+                max_node = curr->next;
+                prev = curr;
+            }
+            curr = curr->next;
+        } 
+        if (prev == NULL) start = max_node->next;
+            else prev->next = max_node->next;
+        
+        max_node->next = sorted;
+        sorted = max_node;
+        print_list(sorted);
+        print_list(start);
+    }
+    return sorted;
+}

@@ -30,6 +30,8 @@ int main() {
 
     print_list(reverse_list(new_list));
 
+    print_list(ascending_sort(new_list));
+
     return 0;
 }
 
