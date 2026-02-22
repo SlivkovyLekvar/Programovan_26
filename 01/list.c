@@ -144,16 +144,19 @@ Node *reverse_list(Node *start){
 Node* ascending_sort(Node *start){
     if (start == NULL) return NULL;
     Node* sorted = NULL;
+    printf("1.start: %d\n", start->value);
     while (start != NULL) {
         Node* max_node = start;
         Node* curr = start;
         Node* prev = NULL;
+        printf("2.current next: %d\n", curr->next->value);
         while (curr->next != NULL) {
             if (curr->next->value > max_node->value) {
                 max_node = curr->next;
                 prev = curr;
             }
             curr = curr->next;
+            printf("max: %d\n", max_node->value);
         } 
         if (prev == NULL) start = max_node->next;
             else prev->next = max_node->next;
