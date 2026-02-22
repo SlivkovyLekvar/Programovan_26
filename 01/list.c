@@ -183,8 +183,33 @@ Node *swap_first_last(Node *start){
     Node* first = start;
     while (penultimate->next->next != NULL) penultimate = penultimate->next;
     start = penultimate->next;
-    start->next = first->next;
-    penultimate->next = first;
+    if (first->next->next == NULL) start->next = first;
+    else {
+        start->next = first->next;
+        penultimate->next = first;
+    }
     first->next = NULL;
+    return start;
+}
+
+Node *swap_second_penultimate(Node *start){
+    if (start == NULL || start->next == NULL) return start;
+    if (start->next->next == NULL) return swap_first_last(start);
+    if (start->next->next->next == NULL) return start;
+    Node* prepenum = NULL;
+    Node* penum = start;
+    Node* second = start->next;
+    while (penum->next->next != NULL) {
+        prepenum = penum;
+        penum = penum->next;
+    }
+    Node* temp = second->next;
+    second->next = penum->next;
+    start->next = penum;
+    if (penum == temp) penum->next = second;
+        else {
+            penum->next = temp;
+            prepenum->next = second;
+        }
     return start;
 }

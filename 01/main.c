@@ -36,6 +36,10 @@ int main() {
 
     print_list(swap_first_last(list));
 
+    Node* list3 = NULL;
+    read_from_txt("output3.txt", &list3);
+    print_list(swap_second_penultimate(list3));
+
     return 0;
 }
 

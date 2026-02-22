@@ -32,7 +32,7 @@ void delete_list(Node* start);
 
 Node* swap_first_last(Node* start);
 
-Node* swap_sdecond_penultimate(Node* start);
+Node* swap_second_penultimate(Node* start);
 
 
 #endif
