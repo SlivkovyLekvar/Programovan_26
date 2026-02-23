@@ -287,17 +287,19 @@ int split(Node *start, int value, Node **list1, Node **list2){
 }
 
 Node *merge(Node *list1, Node *list2){
-    Node*merged = NULL;
+    Node* merged = create_node(list1->value);
     Node* curr1 = list1;
     Node* curr2 = list2;
-    Node* curr_merged = create_node(list1->value);
-    while (curr1 != NULL && curr2 != NULL) {
+    Node* curr_merged = merged;
+    while (curr1->next != NULL && curr2 != NULL) {
         curr_merged->next = create_node(curr2->value);
         curr_merged = curr_merged->next;
         curr2 = curr2->next;
         curr_merged->next = create_node(curr1->next->value);
         curr_merged = curr_merged->next;
         curr1 = curr1->next;
-    }
+    } if (curr1->next == NULL && curr2 == NULL) return merged;
+    if (curr1->next == NULL) curr_merged->next = copy_list(curr2);
+    else curr_merged->next = copy_list(curr1->next);
     return merged;
 }
