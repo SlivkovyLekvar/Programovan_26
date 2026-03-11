@@ -29,3 +29,18 @@ int Enqueue(Queue* q, int n) {
     return 0;
 }
 
+int Dequeue(Queue* q) {
+    if (q->start == NULL) {
+        printf("Fronta je prazdna, neni co vratit.");
+        return -1;
+    }
+    Node* temp = q->start;
+    int value = q->start->data;
+    if (q->start->next == NULL) {
+        printf("Odebrali jste posledni posledni prvek fronty.");
+        q->end = NULL;
+    } else q->start = q->start->next;
+    free(temp);
+    return value;
+}
+
