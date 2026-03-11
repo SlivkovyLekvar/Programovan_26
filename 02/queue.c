@@ -25,6 +25,7 @@ int Enqueue(Queue* q, int n) {
     } else {
         q->end->next = newNode;
         q->end = newNode;
+    }
     return 0;
 }
 
