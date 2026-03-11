@@ -44,3 +44,24 @@ int Dequeue(Queue* q) {
     return value;
 }
 
+int Front(Queue* q) {
+    if (q == NULL) {
+        printf("Fronta je prazdna.");
+        return -1;
+    }    
+    return q->start->data;
+}
+
+int Vypis(Queue* q) {
+    if (q == NULL) {
+        printf("Fronta je prazdna.");
+        return -1;
+    }
+    Node* i = q->start;
+    while (i!=q->end) {
+        printf("%d ", i->data);
+        i = i->next;
+    } printf ("%d\n", i->data);
+    return 0;
+}
+
