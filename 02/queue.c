@@ -37,7 +37,7 @@ int Dequeue(Queue* q) {
     Node* temp = q->start;
     int value = q->start->data;
     if (q->start->next == NULL) {
-        printf("Odebrali jste posledni posledni prvek fronty.");
+        printf("Odebrali jste posledni prvek fronty.");
         q->end = NULL;
     } else q->start = q->start->next;
     free(temp);
@@ -61,7 +61,8 @@ int Vypis(Queue* q) {
     while (i!=q->end) {
         printf("%d ", i->data);
         i = i->next;
-    } printf ("%d\n", i->data);
+    } 
+    printf ("%d\n", i->data);
     return 0;
 }
 
