@@ -14,6 +14,7 @@ int main() {
 
     Queue f = Create();
     Enqueue(f, 4); Enqueue(f, 1); Enqueue(f, 8);
+    Vypis(f);
     int i1 = Dequeue(f); // 4 
     int i2 = Dequeue(f);  // 1
     int i3 = Front(f); // 8
