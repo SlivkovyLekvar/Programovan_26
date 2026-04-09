@@ -22,6 +22,7 @@ int main() {
     Enqueue(&f, 5); Enqueue(&f, 7);
     Vypis(&f); // 8 5 7
 
+    
 
     return 0;
 }

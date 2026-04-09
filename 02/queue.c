@@ -25,7 +25,6 @@ bool IsEmpty(Queue* q) {
 }
 
 int Enqueue(Queue* q, int n) {
-    printf("Vkládám prvek %d do fronty.\n", n);
     Node* newNode = Create_node(n);
     if (newNode == NULL) return -1;
     if (q->start == NULL) {
@@ -33,7 +32,7 @@ int Enqueue(Queue* q, int n) {
         q->start = newNode;
         q->end = newNode;
     } else {
-        printf("Fronta neni prazdna, vkladam prvek na konec.\n");
+        printf("Fronta neni prazdna, vkladam prvek %d na konec.\n", n);
         q->end->next = newNode;
         q->end = newNode;
     }
@@ -52,6 +51,7 @@ int Dequeue(Queue* q) {
         q->end = NULL;
     } else q->start = q->start->next;
     free(temp);
+    printf("Odebiram prvek %d ze zacatku fronty.\n", value);
     return value;
 }
 
@@ -64,7 +64,7 @@ int Front(Queue* q) {
 }
 
 int Vypis(Queue* q) {
-    printf("Obsah fronty: start: %d.\n", q->start ? q->start->data : -1);
+    printf("Obsah fronty: ");
     if (q->start == NULL) {
         printf("Fronta je prazdna.\n");
         return -1;
