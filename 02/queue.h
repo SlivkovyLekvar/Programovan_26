@@ -8,6 +8,8 @@ typedef struct Node {
     struct Node* next;
 } Node;
 
+Node* Create_node(int value);
+
 typedef struct Queue {
     Node* end;
     Node* start;
@@ -15,15 +17,15 @@ typedef struct Queue {
 
 Queue Create();
 
-bool IsEmpty(Queue q);
+bool IsEmpty(Queue* q);
 
 // vloží prvek na konec fronty
-int Enqueue(Queue q, int n);
+int Enqueue(Queue* q, int n);
 // odebere prvek ze začátku fronty a vrátí jeho hodnotu
-int Dequeue(Queue q);
+int Dequeue(Queue* q);
 // vrátí hodnotu prvku ze začátku fronty
-int Front(Queue q);
+int Front(Queue* q);
 
-int Vypis(Queue q);
+int Vypis(Queue* q);
 
 #endif // QUEUE_H
