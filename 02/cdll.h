@@ -23,6 +23,6 @@ CDLLNode* Find(CDLL* list, int value);
 
 CDLL* InsertAfter(CDLL* list, CDLLNode* after, int value);
 
-CDLL* Delete(CDLLNode* node);
+CDLL* Delete(CDLL* list, CDLLNode* node);
 
 #endif //CDLL_H

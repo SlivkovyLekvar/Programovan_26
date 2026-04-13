@@ -69,16 +69,20 @@ CDLL* InsertAfter(CDLL* list, CDLLNode* after, int value) {
     return list;
 }
 
-CDLL* Delete(CDLLNode* node) {
+CDLL* Delete(CDLL* list, CDLLNode* node) {
+    if (list == NULL || list->head == NULL) {
+        printf("Seznam je prazdny, neni co smazat.\n");
+        return NULL;
+    }
     if (node == NULL) {
         printf("Node je prazdny, neni co smazat.\n");
-        return NULL;
+        return list;
     }
     printf("Mazani prvku %d ze seznamu.\n", node->data);
     node->prev->next = node->next;
     node->next->prev = node->prev;
     free(node);
-    return NULL;
+    return list;
 }
 
 
