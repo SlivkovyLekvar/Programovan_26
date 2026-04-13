@@ -9,72 +9,76 @@ CDLLNode* Create_cdll_node(int value) {
     return newNode;
 }
 
-CDLL* Vypis(CDLL* head) {
+void CDLLVypis(CDLL* list) {
     printf("Obsah kruhoveho seznamu: ");
-    if (head == NULL) {
+    if (list == NULL || list->head == NULL) {
         printf("Seznam je prazdny.\n");
-        return head;
+        return;
     }
-    CDLLNode* curr = head->head;
-    while (curr != head->head) {
+    CDLLNode* curr = list->head;
+    do {
         printf("%d ", curr->data);
         curr = curr->next;
-    }
+    } while (curr != list->head);
     printf("\n");
-    return head;
+    return;
 }
 
-CDLL* Find(CDLL* head, int value) {
-    if (head == NULL) {
+CDLLNode* Find(CDLL* list, int value) {
+    if (list == NULL || list->head == NULL) {
         printf("Seznam je prazdny.\n");
         return NULL;
     }
-    CDLLNode* curr = head->head;
-    while (curr != head->head) {
+    CDLLNode* curr = list->head;
+    do {
         if (curr->data == value) {
             printf("Hodnota %d nalezena v seznamu.\n", value);
             return curr;
         }
         curr = curr->next;
-    }
+    } while (curr != list->head);
+    printf("Hodnota %d nenalezena v seznamu.\n", value);
     return NULL;
 }
 
-CDLL* InsertAfter(CDLL* head, int value, int position_value) {
+CDLL* InsertAfter(CDLL* list, CDLLNode* after, int value) {
+    printf("Zacinam funkcu InsertAfter.\n");
     CDLLNode* newNode = Create_cdll_node(value);
-    if (newNode == NULL) return NULL;
-    if (head == NULL) {
-        printf("Seznam je prazdny, vkladam prvni prvek.\n");
-        head->head = newNode;
-        head->size = 1;
-        return head;
+    if (newNode == NULL) {
+        printf("Nepodarilo se alokovat pamet pro novy node.\n");
+        return list;
     }
-    CDLLNode* curr = head->head;
-    while (curr != head->head) {
-        if (curr->data == position_value) {
-            CDLLNode* temp = curr->next;
-            curr->next = newNode;
-            newNode->next = temp;
-            newNode->prev = curr;
-            temp->prev = newNode;
-            head->size++;
-            printf("Vkladam prvek %d za prvek %d.\n", value, position_value);
-            return head;
-        }
-        curr = curr->next;
+    if (list == NULL) {
+        printf("Seznam je prazdny.\n");
+        list = malloc(sizeof(CDLL));
+        if (list == NULL) return NULL;
+        list->head = newNode;
+        list->size = 1;
+        return list;
     }
-    printf("Prvek %d nenalezen v seznamu.\n", position_value);
-    return head;
+    if (after == NULL) {
+        printf("Nezadany node, vkladam na konec seznamu.\n");
+        after = list->head->prev;
+    }
+    printf("Vkladam prvek %d za prvek %d.\n", value, after->data);
+    newNode->next = after->next;
+    newNode->prev = after;
+    after->next->prev = newNode;
+    after->next = newNode;
+    list->size++;
+    return list;
 }
 
-CDLL* Delete(CDLL* head, int value) {
-   if (head == NULL) {
-    printf("Seznam je prazdny, neni co smazat.\n");
-    return head;
-   }
-   CDLLNode* curr = head->head;
-   while (curr != head->head) {
-    if 
-
-   }
+CDLL* Delete(CDLLNode* node) {
+    if (node == NULL) {
+        printf("Node je prazdny, neni co smazat.\n");
+        return NULL;
+    }
+    printf("Mazani prvku %d ze seznamu.\n", node->data);
+    node->prev->next = node->next;
+    node->next->prev = node->prev;
+    free(node);
+    return NULL;
 }
+
+

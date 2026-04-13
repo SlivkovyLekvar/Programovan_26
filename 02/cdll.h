@@ -2,6 +2,7 @@
 #define CDLL_H
 
 #include <stdlib.h>
+#include <stdio.h>
 
 typedef struct CDLLNode {
     int data;
@@ -9,19 +10,19 @@ typedef struct CDLLNode {
     struct CDLLNode* prev;
 } CDLLNode;
 
-CDLLNode* CreateCDLLNode(int value);
+CDLLNode* Create_cdll_node(int value);
 
 typedef struct CDLL {
     CDLLNode* head;
     int size;
 } CDLL;
 
-CDLL* Vypis(CDLL* head);
+void CDLLVypis(CDLL* list);
 
-CDLL* Find(CDLL* head, int value);
+CDLLNode* Find(CDLL* list, int value);
 
-CDLL* InsertAfter(CDLL* head, int value, int position);
+CDLL* InsertAfter(CDLL* list, CDLLNode* after, int value);
 
-CDLL* Delete(CDLL* head, int value);
+CDLL* Delete(CDLLNode* node);
 
 #endif //CDLL_H

@@ -22,7 +22,25 @@ int main() {
     Enqueue(&f, 5); Enqueue(&f, 7);
     Vypis(&f); // 8 5 7
 
-    
+    CDLL* s = NULL;
+    printf("Vytvarim kruhovy seznam.\n");
+    s = InsertAfter(s, s->head, 5); 
+    CDLLVypis(s); // 5
+    s = InsertAfter(s, s->head, 7); 
+    CDLLVypis(s); // 5 7
+    s = InsertAfter(s, s->head, 2); 
+    CDLLVypis(s); // 5 2 7
+    InsertAfter(s, s->head->next, 1); // neukladame novy zacatek
+    CDLLVypis(s); // 5 2 1 7
+    s = InsertAfter(s, s->head->next, 9); 
+    CDLLVypis(s); // 2 9 1 7 5
+    Delete(s->head->next); // neukladame novy zacatek
+    CDLLVypis(s); // 2 1 7 5
+    CDLLNode* s2 = Find(s, 7);
+    s = Delete(s2); 
+    CDLLVypis(s); // 5 2 1
+
+
 
     return 0;
 }
