@@ -3,6 +3,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 typedef struct CDLLNode {
     int data;
@@ -24,5 +25,11 @@ CDLLNode* Find(CDLL* list, int value);
 CDLL* InsertAfter(CDLL* list, CDLLNode* after, int value);
 
 CDLL* Delete(CDLL* list, CDLLNode* node);
+
+CDLL* DeleteAll(CDLL* list, int value);
+
+CDLL* ConvertArray(int array[], int len);
+
+CDLL* Reverse(CDLL* list);
 
 #endif //CDLL_H

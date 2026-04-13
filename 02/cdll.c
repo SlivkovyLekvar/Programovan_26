@@ -85,4 +85,46 @@ CDLL* Delete(CDLL* list, CDLLNode* node) {
     return list;
 }
 
+CDLL* DeleteAll(CDLL* list, int value) {
+    if (list == NULL || list->head == NULL) {
+        printf("Seznam je prazdny, neni co smazat.\n");
+        return NULL;
+    }
+    bool found = false;
+    CDLLNode* curr = list->head;
+    do { 
+        if (curr->data == value) {
+            found = true;
+            CDLLNode* toDelete = curr;
+            curr = curr->next;
+            Delete(list, toDelete);
+        } else {
+            curr = curr->next;
+        }
+    } while (curr != list->head);
+    if (!found) {
+        printf("Hodnota %d nenalezena v seznamu, neni co smazat.\n", value);
+    }
+    return list;
+}
+
+CDLL* ConvertArray(int array[], int len) {
+    printf("Zacinam funkci ConvertArray ");
+    printf("s polem o delce: %d\n", len);
+    CDLL* list = NULL;
+    if (len == 0 || array == NULL) {
+        printf("Pole je prazdne, nelze konvertovat.\n");
+        return NULL;
+    }
+    list = InsertAfter(list, NULL, array[0]);
+    for (int i = 1; i < len; i++) {
+        list = InsertAfter(list, NULL, array[i]);
+    }
+    return list;
+}
+
+CDLL* Reverse(CDLL* list) {
+    
+}
+
 

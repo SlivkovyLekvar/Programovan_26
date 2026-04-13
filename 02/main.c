@@ -6,7 +6,6 @@
 // Poruseni pravidel je podvod a tresta sa VZLOUCENIM ZE STUDIA
 // Nicol Tomkova, 43106
 
-#include <stdio.h>
 #include "queue.h"
 #include "cdll.h"
 
@@ -30,14 +29,21 @@ int main() {
     CDLLVypis(s); // 5 7
     s = InsertAfter(s, s->head, 2); 
     CDLLVypis(s); // 5 2 7
-    InsertAfter(s, s->head->next, 1); // neukladame novy zacatek
+    InsertAfter(s, s->head->next, 1); // neukladame novy zacatek ??
     CDLLVypis(s); // 5 2 1 7
     s = InsertAfter(s, s->head->next, 9); 
     CDLLVypis(s); // 2 9 1 7 5
-    Delete(s, s->head->next); // neukladame novy zacatek
+    Delete(s, s->head->next); // neukladame novy zacatek ??
     CDLLVypis(s); // 2 1 7 5
     CDLLNode* s2 = Find(s, 7);
     s = Delete(s, s2); 
     CDLLVypis(s); // 5 2 1
+
+    int pole[] = { 1055, 2, 29, 8, 7, 15, 29, 8, 22, 6, 29 };
+    CDLL* s1 = ConvertArray(pole, sizeof(pole) / sizeof(pole[0]));
+    CDLLVypis(s1); // 1055 2 29 8 7 15 29 8 22 6 29
+    s1 = DeleteAll(s1, 29); 
+    CDLLVypis(s1); // 1055 2 8 7 15 8 22 6
     return 0;
+
 }
