@@ -78,6 +78,7 @@ CDLL* Delete(CDLL* list, CDLLNode* node) {
         printf("Node je prazdny, neni co smazat.\n");
         return list;
     }
+    if (node == list->head) list->head = list->head->next;
     printf("Mazani prvku %d ze seznamu.\n", node->data);
     node->prev->next = node->next;
     node->next->prev = node->prev;
@@ -185,6 +186,51 @@ CDLL* Sort(CDLL* list) {
         CDLLVypis(list);
         i++;
     } while (start->next!=list->head);
+    return list;
+}
+
+CDLL* SwapFirstLast(CDLL* list) {
+    if (list == NULL || list->head == NULL) {
+        printf("Seznam je prazdny, nelze prohazovat.\n");
+        return NULL;
+    }
+    if (list->size == 1) {
+        printf("Seznam obsahuje pouze jeden prvek, neni co prohazovat.\n");
+        return list;
+    }
+    CDLLNode* origStart = list->head;
+    list->head = list->head->prev;
+    list->head->next = origStart->next;
+    origStart->prev = list->head->prev;
+    list->head->prev->next = origStart;
+    list->head->prev = origStart;
+    origStart->next->prev = list->head;
+    origStart->next = list->head;
+    if (list->size == 2) {
+        printf("som tu");
+        list->head->next = origStart;
+    }
+    return list;
+}
+
+CDLL* SwapSecondPenultimate(CDLL* list) {
+    if (list == NULL || list->head == NULL) {
+        printf("Seznam je prazdny, nelze prohazovat.\n");
+        return NULL;
+    }
+    if (list->head->next->next == list->head) {return SwapFirstLast(list);}
+    CDLLNode* origPen = list->head->prev->prev;
+    CDLLNode* origThird = list->head->next->next;
+    CDLLNode* origPrepen = list->head->prev->prev->prev;
+    list->head->prev->prev = list->head->next;
+    list->head->next = origPen;
+    list->head->next->prev = list->head;
+    list->head->prev->prev->next = list->head->prev;
+    origPen->next = origThird;
+    origThird->prev = origPen;
+    list->head->prev->prev->prev = origPrepen;
+    origPrepen->next = list->head->prev->prev;
+
     return list;
 }
 

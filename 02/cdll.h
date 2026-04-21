@@ -34,4 +34,8 @@ CDLL* Reverse(CDLL* list);
 
 CDLL* Sort(CDLL* list);
 
+CDLL* SwapFirstLast(CDLL* list);
+
+CDLL* SwapSecondPenultimate(CDLL* list);
+
 #endif //CDLL_H
