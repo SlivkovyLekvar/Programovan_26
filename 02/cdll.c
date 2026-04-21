@@ -82,6 +82,7 @@ CDLL* Delete(CDLL* list, CDLLNode* node) {
     node->prev->next = node->next;
     node->next->prev = node->prev;
     free(node);
+    list->size--;
     return list;
 }
 
@@ -124,7 +125,66 @@ CDLL* ConvertArray(int array[], int len) {
 }
 
 CDLL* Reverse(CDLL* list) {
-    
+    if (list == NULL || list->head == NULL) {
+        printf("Seznam je prazdny, nelze obracet.\n");
+        return NULL;
+    }
+    printf("Zacinam funkci Reverse.\n");
+    CDLLNode* curr = list->head;
+    CDLLNode* temp;
+    do {
+        temp = curr->next;
+        curr->next = curr->prev;
+        curr->prev = temp;
+        curr = temp;
+    } while (curr != list->head);
+    list->head = list->head->next;
+    return list;
 }
 
+CDLL* Sort(CDLL* list) {
+    printf("Zacinam funkci Sort.\n");
+    CDLLNode* start = list->head;
+    if (list == NULL || start == NULL) {
+        printf("Seznam je prazdny, nelze seradit.\n");
+        return NULL;
+    }
+    if (start->next == start) {
+        printf("Seznam obsahuje pouze jeden prvek, neni co seradit.\n");
+        return list;
+    }
+    CDLLNode* min;
+    CDLLNode* curr;
+    bool sorted;
+    int i = 0;
+    do {
+        curr = min = start;
+        sorted = false;
+        do {
+            CDLLNode* temp = curr->next;
+            if (curr->data < min->data) {
+                curr->next = min;
+                curr->prev->next = temp;
+                temp->prev = curr->prev;
+                curr->prev = min->prev;
+                min->prev->next = curr;
+                min->prev = curr;
+                min = curr;
+                sorted = true;
+            }
+            curr = temp;
+        } while (curr != list->head);
+        if (i==0) {
+                list->head = min;
+            }
+        if (!sorted) {
+            start = start->next;
+        }
+        printf("start = %d.", start->data);
+        printf("Po %d. iteraci: ", i+1);
+        CDLLVypis(list);
+        i++;
+    } while (start->next!=list->head);
+    return list;
+}
 

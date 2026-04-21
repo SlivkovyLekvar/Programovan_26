@@ -3,7 +3,7 @@
 // Nikto mi pri vypracovani neradil
 // Ak niektory riadok tieto pravidla porusuje, je oznaceny komentarom
 // TOTO NENI MOJE TVORBA
-// Poruseni pravidel je podvod a tresta sa VZLOUCENIM ZE STUDIA
+// Poruseni pravidel je podvod a tresta sa VYLOUCENIM ZE STUDIA
 // Nicol Tomkova, 43106
 
 #include "queue.h"
@@ -44,6 +44,10 @@ int main() {
     CDLLVypis(s1); // 1055 2 29 8 7 15 29 8 22 6 29
     s1 = DeleteAll(s1, 29); 
     CDLLVypis(s1); // 1055 2 8 7 15 8 22 6
+    CDLL*s3 = Reverse(s1); // 6 22 8 15 7 8 2 1055
+    CDLLVypis(s3); // 6 22 8 15 7 8 2 1055
+    CDLL* s4 = Sort(s3); // 2 6 7 8 8 15 22 1055
+    CDLLVypis(s4); // 2 6 7 8 8 15 22 1055
     return 0;
 
 }

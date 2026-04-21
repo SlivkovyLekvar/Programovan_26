@@ -32,4 +32,6 @@ CDLL* ConvertArray(int array[], int len);
 
 CDLL* Reverse(CDLL* list);
 
+CDLL* Sort(CDLL* list);
+
 #endif //CDLL_H
